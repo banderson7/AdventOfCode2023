@@ -1,8 +1,11 @@
 import csv
 import requests
+import os.path
 
 
 def get_input_data(day: int):
+    if os.path.exists(f'./Day{day}/Day{day}_input.txt'):
+        return
     session_id = open('./config').read()
     r = requests.get(f'https://adventofcode.com/2023/day/{day}/input', cookies={
         'session': session_id
