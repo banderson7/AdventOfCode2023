@@ -57,4 +57,21 @@ def day_two_part_one():
 
 
 def day_two_part_two():
-    pass
+    data = open_file(2)
+    powers = []
+    for line in data:
+        game = Game(line)
+        minimum_cubes = {
+            "red": 0,
+            "blue": 0,
+            "green": 0,
+        }
+        for handful in game.handfuls:
+            for cube_set in handful.cube_sets:
+                if cube_set.count > minimum_cubes[cube_set.color]:
+                    minimum_cubes[cube_set.color] = cube_set.count
+        power = 1
+        for minimum in minimum_cubes.values():
+            power *= minimum
+        powers.append(power)
+    print(f'Day Two Part 2 result: {sum(powers)}')
