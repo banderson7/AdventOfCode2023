@@ -1,6 +1,7 @@
 import csv
-import requests
 import os.path
+
+import requests
 
 
 def get_input_data(day: int):
